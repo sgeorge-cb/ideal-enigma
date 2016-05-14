@@ -1,0 +1,91 @@
+app:
+  name: client
+  
+org:
+  caringbridge:
+    services:
+      version: 1.0
+      swagger:
+        title: CaringBridge Auth Server Micro-Service
+        description: >
+          This is a multi-line description of
+          the micro service. 
+        uri-base: /references  # Tried using ${app.name} here without success, not sure why
+        termslocation: /terms_of_service.txt
+        contact: contact@caringbridge.org
+        license:
+          type: Caring Bridge proprietary license
+          url: http://www.caringbridge.org/licenses/LICENSE
+
+
+spring:
+  profiles:
+    active: dev
+
+  resources:
+    chain:
+      enabled: false    
+---
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      database: CB
+      host: www.caringbridge.dev
+      port: 27017
+server:
+  port: 11002
+
+---
+endpoints:
+  beans:
+    enabled: false
+  configprops:
+    enabled: false
+  docs:
+    enabled: false
+  dump:
+    enabled: false
+  env:
+    enabled: false
+  flyway:
+    enabled: false
+  health:
+    id: health
+  info:
+    enabled: false
+  jmx:
+    enabled: false
+  jolokia:
+    enabled: false
+  liquibase:
+    enabled: false
+  logfile:
+    enabled: false
+  mappings:
+    enabled: false
+  metrics:
+    enabled: false
+  shutdown:
+    enabled: false
+  trace:
+    enabled: false
+server:
+  port: 11002
+  undertow:
+    accesslog:
+      dir: /var/log/microservices/${app.name}
+      enabled: false
+      pattern: '%h %l %u %t "%r" %s %b %{i,X-Request-Id} %D'
+      
+logging:
+  level:
+    org.springframework.security: info
+
+spring:
+  resources:
+    chain:
+      enabled: true
+
+  thymeleaf:
+    cache: false

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/signin.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<!-- th:action="@{/home}"  -->
+		<div class="pull-right"
+			th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+			<span th:case="${false}">Not logged in!</span> 
+			<span th:case="${true}">Logged in as <span th:text="${#authentication.name}" /> | 
+			<a class="btn-link" href="/goto/home" role="alert">Home >> </a>
+			</span>
+		</div>
+		<form name="f" class="form-signin" th:action="@{/login}" method="post">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<div th:if="${param.error}" class="alert alert-danger" role="alert">
+				Invalid username and password.</div>
+			<div th:if="${param.logout}" class="alert alert-success">You
+				have been logged out.</div>
+			<label for="inputEmail" class="sr-only">Email address</label> 
+			<input type="email" id="inputEmail" name="inputEmail" class="form-control" 
+				placeholder="Email address" required="" autofocus="" /> 
+			<label for="inputPassword" class="sr-only">Password</label> 
+			<input type="password" name="inputPassword" id="inputPassword"
+				class="form-control" placeholder="Password" required="" />
+			<div class="checkbox">
+				<label> <input type="checkbox" name="remember-me" />
+					Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+	</div>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+</body>
+</html>

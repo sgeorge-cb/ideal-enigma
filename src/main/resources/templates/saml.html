@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Redirecting to the secure SAML place</h1>
+<form method="post" th:action="${spPostUrl}" onload="this.submit()"> 
+<input type="hidden" name="SAMLResponse" th:value="${sAMLResponse}" /> 
+<input type="hidden" name="RelayState" value="token" />
+<input type="submit" value="Submit" /> 
+</form> 
+</body>
+</html>
