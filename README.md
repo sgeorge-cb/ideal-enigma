@@ -2,12 +2,19 @@
 An experiment project to test out Authentication through SAML2 using spring. 
 This project demonstrates the use of IdP initiated SAML2 without the use of an actual IdP.
 
-### Pre-requisites
-1. Set up the sample OneLogin SP by cloning and following instructions on https://github.com/onelogin/java-saml.git
-2. There will be 2 projects - **_java-saml_** and **_java-saml-sample_**
-3. Clone the ideal-enigma project and set it up as a gradle project
-4. Make sure ideal-enigma is configured to use the mongo repository that has the CB Profile Collection with user information
-5. Copy the public key from **project: _/ideal-enigma/blob/master/src/main/resources/saml/cb2056.pem_** to  **project:   _/java-saml-sample/src/main/webapp/consume.jsp_**
+### Setup
+1. Clone and set up ideal-enigma as a gradle project
+2. Make sure ideal-enigma is configured to use the mongo repository that has the CB Profile Collection with user information
+3. Run as Spring Boot application
+4. Access the application at http://localhost:11002/login
+5. Enter CB userid and password. If successful, user will reach home page.
+6. Click on the "SAML Demo" button. 
+7. The user will be logged into the SP application as the CB user.
+
+### Pre-requisite (There needs to be a SAML2 Service Provider that we can test against)
+1. For this demo we can use the open source OneLogin SP by cloning and following instructions on https://github.com/onelogin/java-saml.git
+2. java-saml has 2 projects - **_java-saml_** and **_java-saml-sample_**
+3. Copy the public key from **project: _/ideal-enigma/src/main/resources/saml/cb2056.pem_** to  **project:   _/java-saml-sample/src/main/webapp/consume.jsp_**
 
 
 
