@@ -15,6 +15,8 @@ This project demonstrates the use of IdP initiated SAML2 without the use of an a
 1. For this demo we can use the open source OneLogin SP by cloning and following instructions on https://github.com/onelogin/java-saml.git
 2. java-saml has 2 projects - **_java-saml_** and **_java-saml-sample_**
 3. Copy the public key from **project: _/ideal-enigma/src/main/resources/saml/cb2056.pem_** to  **project:   _/java-saml-sample/src/main/webapp/consume.jsp_**
+4. Run the application. 
+5. Make sure ideal-enigma posts the SAML AuthResponse to http://localhost:8080/consume.jsp (which is the SP Url)
 
 
 
