@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.caringbridge.client.security.provider.CBAuthenticationProvider;
 import org.caringbridge.client.security.services.ProfileUserDetailsService;
+import org.opensaml.DefaultBootstrap;
+import org.opensaml.xml.ConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -52,9 +54,11 @@ public class CbWebApplication  extends WebSecurityConfigurerAdapter{
     /**
 	 * Main method to run the Spring Boot Application.
 	 * @param args arguments used when running on command line.
+     * @throws ConfigurationException 
 	 */
-	public static void main(final String[] args) {
+	public static void main(final String[] args) throws ConfigurationException {
 		System.setProperty("spring.devtools.livereload.enabled", "true");
+		DefaultBootstrap.bootstrap();
 		SpringApplication.run(CbWebApplication.class, args);
 	}
 	
